@@ -8,6 +8,9 @@
 
 #define BUFFER_SIZE 1024
 
+#define S_LONG 2
+#define S_SHORT 1
+
 
 /* The Function Prototypes */
 int _printf(const char *format, ...);
@@ -31,7 +34,7 @@ int _sprintf(const char *_format, int *k,
 va_list list, char buffer[], int flags, int width, int precision, int size);
 
 
-/* Functions to print format specifiers*/
+/**** Functions to print format specifiers *****/
 int fetch_flags(const char *format, int *i);
 int fetch_width(const char *format, int *i, va_list list);
 int fetch_precision(const char *format, int *i, va_list list);
@@ -39,6 +42,16 @@ int fetch_size(const char *format, int *i);
 
 
 
+
+
+
+/********Manipulators*******/
+int is_printable(char);
+int append_hexa_code(char, char[], int);
+int is_digit(char);
+
+long int convert_size_num(long int num, int size);
+long int convert_size_unsign(unsigned long int, int size);
 
 
 
