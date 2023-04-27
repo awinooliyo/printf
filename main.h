@@ -8,6 +8,13 @@
 
 #define BUFFER_SIZE 1024
 
+/* FLAGS  */
+#define F-MINUS 1
+#define F_PLUS 2
+#define F_ZERO 4
+#define F_HASH 8
+#define F_SPACE 16
+
 #define S_LONG 2
 #define S_SHORT 1
 
@@ -33,16 +40,46 @@ struct _format
 int _sprintf(const char *_format, int *k,
 va_list list, char buffer[], int flags, int width, int precision, int size);
 
+/* Functions to print numbers */
+int print_int(va_list args, char buffer[],
+	int flags, int width, int precision, int size);
+int print_binary(va_list args, char buffer[],
+	int flags, int width, int precision, int size);
+int print_unsigned(va_list args, char buffer[],
+	int flags, int width, int precision, int size);
+int print_octal(va_list args, char buffer[],
+	int flags, int width, int precision, int size);
+int print_hexadecimal(va_list args, char buffer[],
+	int flags, int width, int precision, int size);
+int print_hexa_upper(va_list args, char buffer[],
+	int flags, int width, int precision, int size);
+int print_hexad(va_list args, char map_to[],
+char buffer[], int flags, char flag_ch, int width, int precision, int size);
+int print_non_printable(va_list types, char buffer[],
+	int flags, int width, int precision, int size);
+int print_pointer(va_list args, char buffer[],
+	int flags, int width, int precision, int size);
+int print_reverse(va_list args, char buffer[],
+	int flags, int width, int precision, int size);
+int print_rot13string(va_list args, char buffer[],
+	int flags, int width, int precision, int size);
+
+
+/* Function to print characters */
+int print_char(va_list args, char buffer[],
+	int flags, int width, int precision, int size);
+int print_string(va_list args, char buffer[],
+	int flags, int width, int precision, int size);
+int print_percent(va_list args, char buffer[],
+	int flags, int width, int precision, int size);
+
+
 
 /**** Functions to print format specifiers *****/
 int fetch_flags(const char *format, int *i);
 int fetch_width(const char *format, int *i, va_list list);
 int fetch_precision(const char *format, int *i, va_list list);
 int fetch_size(const char *format, int *i);
-
-
-
-
 
 
 /********Manipulators*******/
