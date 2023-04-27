@@ -10,28 +10,28 @@
 
 int fetch_size(const char *format, int *u)
 {
-	int curr_x = *u + 1;
+	int curr_y = *u + 1;
 	int size = 0;
 
-	while (format[curr_x] == '1' || format[curr_x] == 'h')
+	while (format[curr_y] == '1' || format[curr_y] == 'h')
 	{
-		if (format[curr_x] == '1')
+		if (format[curr_y] == '1')
 		{
 			size = S_LONG;
 		}
-		else if (format[curr_x] == 'h')
+		else if (format[curr_y] == 'h')
 		{
 			size = S_SHORT;
 		}
-		curr_x++;
+		curr_y++;
 	}
 	if (size == 0)
 	{
-		*u = curr_x - 1;
+		*u = curr_y - 1;
 	}
 	else
 	{
-		*u = curr_x;
+		*u = curr_y;
 	}
 	return (size);
 }
