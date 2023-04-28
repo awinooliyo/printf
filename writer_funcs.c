@@ -27,7 +27,6 @@ int handle_write_char(char b, char buffer[],
 	buffer[k] = '\0';
 
 	if (width > 1)
-	{
 		buffer[BUFFER_SIZE - 1] = '\0';
 		for (k = 0; k < width - 1; k++)
 			buffer[BUFFER_SIZE - k - 2] = padd;
@@ -37,7 +36,6 @@ int handle_write_char(char b, char buffer[],
 		else
 			return (write(1, &buffer[BUFFER_SIZE - k - 1], width - 1) +
 					write(1, &buffer[0], 1));
-	}
 
 	return (write(1, &buffer[0], 1));
 }
@@ -88,8 +86,7 @@ int write_number(int is_negative, int index, char buffer[],
  * @extra_char: Extra char
  * Return: Number of printed chars.
  */
-int write_num(int index, char buffer[],
-	int flags, int width, int prec,
+int write_num(int index, char buffer[], int flags, int width, int prec,
 	int length, char padd, char extra_char)
 {
 	int k, padd_start = 1;
@@ -111,24 +108,18 @@ int write_num(int index, char buffer[],
 			buffer[k] = padd;
 		buffer[k] = '\0';
 		if (flags & F_MINUS && padd == ' ')/* Asign extra char to left of buffer */
-		{
 			if (extra_char)
 				buffer[--index] = extra_char;
 			return (write(1, &buffer[index], length) + write(1, &buffer[1], k - 1));
-		}
 		else if (!(flags & F_MINUS) && padd == ' ')/* extra char to left of buff */
-		{
 			if (extra_char)
 				buffer[--index] = extra_char;
 			return (write(1, &buffer[1], k - 1) + write(1, &buffer[index], length));
-		}
 		else if (!(flags & F_MINUS) && padd == '0')/* extra char to left of padd */
-		{
 			if (extra_char)
 				buffer[--padd_start] = extra_char;
 			return (write(1, &buffer[padd_start], k - padd_start) +
 				write(1, &buffer[index], length - (1 - padd_start)));
-		}
 	}
 	if (extra_char)
 		buffer[--index] = extra_char;
@@ -147,8 +138,7 @@ int write_num(int index, char buffer[],
  *
  * Return: Number of written chars.
  */
-int write_unsgnd(int is_negative, int index,
-	char buffer[],
+int write_unsgnd(int is_negative, int index, char buffer[],
 	int flags, int width, int precision, int size)
 {
 	/* The number is stored at the bufer's right and starts at position i */
