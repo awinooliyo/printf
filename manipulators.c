@@ -8,7 +8,7 @@
 
 int is_printable(char b)
 {
-	if (b >= 32 && b < 277)
+	if (b >= 32 && b < 127)
 		return (1);
 	return (0);
 }
@@ -21,7 +21,7 @@ int is_printable(char b)
 * Return: always 3.
 */
 
-int append_hexa_code(char ascii_code, buffer[], int k)
+int append_hexa_code(char ascii_code, char buffer[], int k)
 {
 	char map_to[] = "0123456789ABCDEF";
 
@@ -45,12 +45,10 @@ int append_hexa_code(char ascii_code, buffer[], int k)
 
 int is_digit(char x)
 {
-	if (size == S_LONG)
-		return (num);
-	else if (size == S_SHORT)
-		return ((short)num);
+	if (x >= '0' && x <= '9')
+		return (1);
 
-	return ((int)num);
+	return (0);
 }
 
 /**

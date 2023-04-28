@@ -7,7 +7,7 @@
 #include <unistd.h>
 
 #define BUFFER_SIZE 1024
-#define UNUSED(x) void(x)
+#define UNUSED(x) (void)(x)
 /* FLAGS  */
 #define F_MINUS 1
 #define F_PLUS 2
@@ -25,7 +25,7 @@ int _printf(const char *format, ...);
 /* Function helpers */
 void print_buffer(char buffer[], int *buff_index);
 /**
- * struct _format - Struct op
+ * struct _format - Structure operation
  *
  * @_format: character variable to store format specifier.
  * @myfunc: a function pointer that points to a function that takes
@@ -36,6 +36,13 @@ struct _format
 	char _format;
 	int (*myfunc)(va_list, char[], int, int, int, int);
 };
+/**
+ * typedef struct _format n_format - Structure operation
+ *
+ * @_format: The format.
+ * @n_format: The function associated.
+ */
+typedef struct _format n_format;
 
 int _sprintf(const char *_format, int *k,
 va_list list, char buffer[], int flags, int width, int precision, int size);

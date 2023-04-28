@@ -1,4 +1,4 @@
-#include <main.h>
+#include "main.h"
 
 /**
 * fetch_flags - calculates the active flags.
@@ -20,7 +20,7 @@ int fetch_flags(const char *format, int *k)
 		for (x = 0; FLAGS_CH[x] != '\0'; x++)
 			if (format[curr_y] == FLAGS_CH[x])
 			{
-				flags |= FLAGS_ARR[x]
+				flags |= FLAGS_ARR[x];
 				break;
 			}
 		if (FLAGS_CH[x] == 0)
@@ -29,3 +29,4 @@ int fetch_flags(const char *format, int *k)
 	*k = curr_y - 1;
 
 	return (flags);
+}

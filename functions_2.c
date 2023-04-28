@@ -59,7 +59,7 @@ int print_pointer(va_list args, char buffer[],
  * @size: Size specifier
  * Return: Number of chars printed
  */
-int print_non_printable(va_list types, char buffer[],
+int print_non_printable(va_list args, char buffer[],
 	int flags, int width, int precision, int size)
 {
 	int k = 0, offset = 0;
@@ -72,16 +72,16 @@ int print_non_printable(va_list types, char buffer[],
 
 	if (strng == NULL)
 		return (write(1, "(null)", 6));
-	while (str[k] != '\0')
+	while (strng[k] != '\0')
 	{
 		if (is_printable(strng[k]))
-			buffer[k + offset] = str[k];
+			buffer[k + offset] = strng[k];
 		else
 			offset += append_hexa_code(strng[k], buffer, k + offset);
 		k++;
 	}
 	buffer[k + offset] = '\0';
-	return (write(1, buffer, i + offset));
+	return (write(1, buffer, k + offset));
 }
 /************************* PRINT REVERSE *************************/
 /**
@@ -152,8 +152,8 @@ int print_rot13string(va_list args, char buffer[],
 	UNUSED(precision);
 	UNUSED(size);
 
-	if (str == NULL)
-		str = "(AHYY)";
+	if (strng == NULL)
+		strng = "(AHYY)";
 	for (k = 0; strng[k]; k++)
 	{
 		for (t = 0; in[t]; t++)
@@ -161,7 +161,7 @@ int print_rot13string(va_list args, char buffer[],
 			if (in[t] == strng[k])
 			{
 				s = out[t];
-				write(1, &x, 1);
+				write(1, &s, 1);
 				count++;
 				break;
 			}
@@ -169,7 +169,7 @@ int print_rot13string(va_list args, char buffer[],
 		if (!in[t])
 		{
 			s = strng[k];
-			write(1, &x, 1);
+			write(1, &s, 1);
 			count++;
 		}
 	}
