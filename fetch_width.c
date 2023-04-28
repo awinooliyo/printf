@@ -10,7 +10,7 @@
 
 int fetch_width(const char *format, int *u, va_list list)
 {
-	int curr_y;
+	int curr_y = *u + 1;
 	int width = 0;
 
 	while (format[curr_y] != '\0')

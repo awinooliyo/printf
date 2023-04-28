@@ -108,18 +108,24 @@ int write_num(int index, char buffer[], int flags, int width, int prec,
 			buffer[k] = padd;
 		buffer[k] = '\0';
 		if (flags & F_MINUS && padd == ' ')/* Asign extra char to left of buffer */
+		{
 			if (extra_char)
 				buffer[--index] = extra_char;
 			return (write(1, &buffer[index], length) + write(1, &buffer[1], k - 1));
-		else if (!(flags & F_MINUS) && padd == ' ')/* extra char to left of buff */
+		}
+		else if (!(flags & F_MINUS) && padd == ' ')
+		{
 			if (extra_char)
 				buffer[--index] = extra_char;
 			return (write(1, &buffer[1], k - 1) + write(1, &buffer[index], length));
+		}
 		else if (!(flags & F_MINUS) && padd == '0')/* extra char to left of padd */
+		{
 			if (extra_char)
 				buffer[--padd_start] = extra_char;
 			return (write(1, &buffer[padd_start], k - padd_start) +
 				write(1, &buffer[index], length - (1 - padd_start)));
+		}
 	}
 	if (extra_char)
 		buffer[--index] = extra_char;
