@@ -73,6 +73,18 @@ int print_string(va_list args, char buffer[],
 int print_percent(va_list args, char buffer[],
 	int flags, int width, int precision, int size);
 
+/* functions for width*/
+int handle_write_char(char b, char buffer[],
+	int flags, int width, int precision, int size);
+int write_number(int is_positive, int index, char buffer[],
+	int flags, int width, int precision, int size);
+int write_num(int index, char bff[], int flags, int width, int precision,
+	int length, char padd, char extra_char);
+int write_pointer(char buffer[], int index, int length,
+	int width, int flags, char padd, char extra_char, int padd_start);
+int write_unsgnd(int is_negative, int index,
+char buffer[],
+	int flags, int width, int precision, int size);
 
 
 /**** Functions to print format specifiers *****/
