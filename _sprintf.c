@@ -21,7 +21,7 @@ int _sprintf(const char *format, int *index, va_list list, char buffer[],
 		{'c', print_char}, {'%', print_percent}, {'s', print_string},
 		{'i', print_int}, {'b', print_binary}, {'d', print_int},
 		{'u', print_unsigned}, {'R', print_rot13string}, {'S', print_non_printable},
-		{'p', print_pointer}, {'X', print_hexa_upper},
+		{'p', print_pointer}, {'X', print_hexad_upper},
 		{'x', print_hexadecimal}, {'o', print_octal}, {'\0', NULL}
 	};
 	for (y = 0; format_types[y]._format != '\0'; y++)
