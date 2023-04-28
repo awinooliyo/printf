@@ -2,14 +2,14 @@
 
 /**
 * _sprintf - prints an argument based on the type.
-* @format: the formatted string in which to print the arguments.
-* @args: list of arguments to print.
+* @format: the formattedtring in which to print the arguments.
+* @list: list of arguments to print.
 * @index: index.
 * @buffer: buffer array to handle the print.
 * @flags: calculates the active flags.
 * @width: gets the width.
-* @precision: the precision specification.
-* @size: the size specifier.
+* @precision: the precisionpecification.
+* @size: theizepecifier.
 * Return: either 1 or 2;
 */
 
@@ -26,7 +26,8 @@ int _sprintf(const char *format, int *index, va_list list, char buffer[],
 	};
 	for (y = 0; format_types[y]._format != '\0'; y++)
 		if (format[*index] == format_types[y]._format)
-			return (format_types[y].myfunc(list, buffer, flags, width, precision, size));
+			return (format_types[y].myfunc(list, buffer,
+				flags, width, precision, size));
 	if (format_types[y]._format == '\0')
 	{
 		if (format[*index] == '\0')

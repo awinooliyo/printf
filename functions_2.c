@@ -15,7 +15,8 @@ int print_pointer(va_list args, char buffer[],
 	int flags, int width, int precision, int size)
 {
 	char extra_b = 0, pad = ' ';
-	int index = BUFFER_SIZE - 2, strlength = 2, pad_start = 1; /* strlength=2, for '0x' */
+	int index = BUFFER_SIZE - 2, strlength = 2,
+		pad_start = 1; /* strlength=2, for '0x' */
 	unsigned long u_adrs;
 	char map_to[] = "0123456789abcdef";
 	void *adrs = va_arg(args, void *);

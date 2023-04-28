@@ -9,7 +9,6 @@
  * @width: get width.
  * @precision: precision specifier
  * @size: Size specifier
- *
  * Return: Number of chars printed.
  */
 int handle_write_char(char b, char buffer[],
@@ -87,7 +86,6 @@ int write_number(int is_negative, int index, char buffer[],
  * @length: Number length
  * @padd: Pading char
  * @extra_char: Extra char
- *
  * Return: Number of printed chars.
  */
 int write_num(int index, char buffer[],
@@ -96,7 +94,8 @@ int write_num(int index, char buffer[],
 {
 	int k, padd_start = 1;
 
-	if (prec == 0 && index == BUFFER_SIZE - 2 && buffer[index] == '0' && width == 0)
+	if (prec == 0 && index == BUFFER_SIZE - 2 &&
+			buffer[index] == '0' && width == 0)
 		return (0); /* printf(".0d", 0)  no char is printed */
 	if (prec == 0 && index == BUFFER_SIZE - 2 && buffer[index] == '0')
 		buffer[index] = padd = ' '; /* width is displayed with padding ' ' */
