@@ -19,14 +19,12 @@ int handle_write_char(char b, char buffer[],
 
 	UNUSED(precision);
 	UNUSED(size);
-
 	if (flags & F_ZERO)
 		padd = '0';
-
 	buffer[k++] = b;
 	buffer[k] = '\0';
-
 	if (width > 1)
+	{
 		buffer[BUFFER_SIZE - 1] = '\0';
 		for (k = 0; k < width - 1; k++)
 			buffer[BUFFER_SIZE - k - 2] = padd;
@@ -36,7 +34,7 @@ int handle_write_char(char b, char buffer[],
 		else
 			return (write(1, &buffer[BUFFER_SIZE - k - 1], width - 1) +
 					write(1, &buffer[0], 1));
-
+	}
 	return (write(1, &buffer[0], 1));
 }
 

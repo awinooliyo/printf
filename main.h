@@ -18,12 +18,6 @@
 #define S_LONG 2
 #define S_SHORT 1
 
-
-/* The Function Prototypes */
-int _printf(const char *format, ...);
-
-/* Function helpers */
-void print_buffer(char buffer[], int *buff_index);
 /**
  * struct _format - Structure operation
  *
@@ -44,6 +38,7 @@ struct _format
  */
 typedef struct _format n_format;
 
+int _printf(const char *format, ...);
 int _sprintf(const char *_format, int *k,
 va_list list, char buffer[], int flags, int width, int precision, int size);
 
